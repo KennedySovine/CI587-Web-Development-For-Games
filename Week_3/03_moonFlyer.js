@@ -42,6 +42,16 @@ function create() {
         repeat: -1
     });
 
+    this.anims.create({
+        key:'playerBang',
+        frames: this.anims.generateFrameNumbers('playerShip_sp', {
+            start: 10,
+            end: 20
+        }),
+        frameRate: 10,
+        repeat: 0
+    });
+
     // setup the player ship
     playerShip_spr = this.add.sprite(GAMEWIDTH / 2, GAMEHEIGHT - 100, 'playerShip_spr');
 
@@ -54,6 +64,9 @@ function create() {
     // Record when space key is pressed
     fireButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
+    //Record when k is pressed
+    explodeButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
+
 
 } // end of create()
 
@@ -64,5 +77,5 @@ function update() {
         background_spr.y = -GAMEHEIGHT;
     }
     //Handle the  players ship
-    updatePlayer(playerShip_spr, cursors, fireButton);
+    updatePlayer(playerShip_spr, cursors, fireButton, explodeButton);
 } //end of update()
