@@ -91,9 +91,10 @@ function draw() {
     ctx.fillStyle = "green";
     ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
     //Bricks
-    ctx.fillStyle = "red";
+    const colors = ["red", "magenta", "purple", "orange", "pink"];
     //draw bricks
     for (i = 0; i < bricks.nRows; i++) {
+        ctx.fillStyle = colors[i];
         for (j = 0; j < bricks.nCols; j++) {
             if (bricks.brick_ary[i][j] === 1) {
                 ctx.fillRect((j * (bricks.brickWidth + bricks.padding)) + bricks.padding, (i * (bricks.brickHeight + bricks.padding)) + bricks.padding,
