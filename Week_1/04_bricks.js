@@ -7,6 +7,7 @@ let rightDown_bool = false;
 let leftDown_bool = false;
 let aniFrameID = 0;
 var canvas, ctx;
+var score = 0;
 
 let bricks = {
     nRows: 5,
@@ -51,6 +52,9 @@ function init() {
     window.addEventListener('keyup', doKeyUp, true);
 
     stop_bool = false;
+
+    scoreDisplay = document.querySelector('#score');
+    messageDisplay = document.querySelector('#message');
     
     draw();
 } // end of init()
@@ -114,10 +118,16 @@ function checkCollisions() {
     var row = Math.floor(ball.y / rowHeight);
     var col = Math.floor(ball.x / colWidth);
     var paddleCentreX;
+    if (bricks.brick_ary.length === 0){
+        stop_bool = true;
+        messageDisplay.innerHTML = "You win! Score: " + score;
+    }
     if (row < bricks.nRows && row >= 0 && col >= 0 && bricks.brick_ary[row][col] === 1) {
         console.log("Bang!");
+        score += 20;
+        scoreDisplay.innerHTML = score;
         ball.dy = -ball.dy;
-        //bricks.brick_ary[row][col] = 0;
+        bricks.brick_ary[row][col] = 0;
     }
 
     // check for collision with edges
@@ -141,6 +151,7 @@ function checkCollisions() {
     } else if (ball.y > HEIGHT) {
         //TODO: you lose!
         console.log("off bottom");
+        messageDisplay.innerHTML = "You lost. Try again";
         stop_bool = true;
     }
 } // end of checkCollisions()
