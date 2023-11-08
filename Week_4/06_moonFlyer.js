@@ -75,9 +75,7 @@ function create() {
     });
 
     // setup the player ship
-    playerShip_spr = this.add.sprite(GAMEWIDTH / 2, GAMEHEIGHT - 100, 'playerShip_sp');
-    playerShip_spr.setOrigin(0.455, 0.5);
-    playerShip_spr.anims.load('playerZoosh');
+    playerShip_spr = new Player (this, 'playerShip_sp');
 
     // Add some controls to play the game with
     cursors = this.input.keyboard.createCursorKeys();
@@ -115,7 +113,7 @@ function update() {
             background_spr.y = -GAMEHEIGHT;
         }
         //Handle the  players ship
-        updatePlayer(playerShip_spr, cursors, fireButton);
+        playerShip_spr.updateMe(cursors, fireButton);
 
         // if fire button is down, then see if we can fire a bullet
         //  To avoid them being allowed to fire too fast we set a time limit    
@@ -172,7 +170,7 @@ function checkCollisionPlayer(playerShip_spr, enemy_spr) {
     if (collided(playerShip_spr, enemy_spr)) {
         console.log("player and enemy collided");
         //kill the players ship
-        killPlayer(playerShip_spr);
+        playerShip_spr.killMe();
         //kill the other ship
         enemy_spr.killMe();
     }
@@ -199,6 +197,7 @@ function startGame() {
     playerShip_spr.anims.play('playerZoosh');
 
     startEnemies(this);
+    playerShip_spr.startMe(-0.63, -2.3);
 } //startGame()
 
 function startEnemies(currentScene) {
