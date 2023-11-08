@@ -17,5 +17,33 @@ class Klingon extends Phaser.GameObjects.Sprite {
             this._nextBulletTime = this.scene.time.now + this._fireDelay;
         }
     }; //end of fire()
+
+    updateMe(cursors){
+        if (cursors.left.isDown) {
+            this.x -= 4 ;
+            // simple boundary check
+            if (this.x < 0) {
+                this.x = GAMEWIDTH;
+            }
+        }
+        if (cursors.right.isDown) {
+            this.x += 4;
+            if (this.x > GAMEWIDTH) {
+                this.x = 0;
+            }
+        }
+        if (cursors.up.isDown){
+            this.y -= 4;
+            if (this.y < 0){
+                this.y = GAMEHEIGHT;
+            }
+        }
+        if (cursors.down.isDown){
+            this.y += 4;
+            if (this.y  > GAMEHEIGHT){
+                this.y = 0;
+            }
+        }
+    }
 } // end of Class
  

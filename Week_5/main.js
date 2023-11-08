@@ -38,11 +38,12 @@ function create() {
 function update() {
     var bullet_ary;
     //  Check for movement keys
-    if (cursors.left.isDown) {
+    /*if (cursors.left.isDown) {
         playerShip_spr.rotation -= .1;
     } else if (cursors.right.isDown) {
         playerShip_spr.rotation += .1;
-    }
+    }*/
+    playerShip_spr.updateMe(cursors);
     //  Player Firing?
     if (fireButton.isDown) {
         playerShip_spr.fire(bulletGroup);
