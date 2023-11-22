@@ -17,15 +17,15 @@ let world = {
     // identify location and type of items
     l1Item_ary: [
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 2, 1, 0, 0, 0, 0, 0, 0, 0],
+		[0, 2, 1, 0, 0, 0, 0, 0, 3, 0],
 		[0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 3, 0, 1, 0, 0, 0, 0, 0],
+		[0, 0, 3, 0, 1, 0, 0, 3, 0, 0],
 		[0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
 		[0, 0, 1, 0, 0, 0, 0, 0, 1, 0],
 		[0, 0, 0, 2, 0, 1, 0, 0, 0, 0],
 		[0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
-		[0, 0, 0, 1, 0, 0, 0, 0, 0, 0]],
+		[0, 0, 0, 1, 0, 0, 0, 3, 0, 0]],
     player_spr: null
 }; // end of world
 
@@ -102,6 +102,16 @@ function update() {
     playerNextRightCol = xPxToCol(world, newXpos + world.player_spr.width - 5);
     playerNextTopRow = yPxToRow(world, newYpos + 5);
     playerNextBottomRow = yPxToRow(world, newYpos + world.player_spr.height - 5);
+
+    //Check if Gravestone
+    if ((world.l1Item_ary[playerNextTopRow][playerNextLeftCol] == 2 || 
+        world.l1Item_ary[playerNextTopRow][playerNextRightCol] == 2) && 
+        (world.l1Item_ary[playerNextBottomRow][playerNextLeftCol] == 2 || 
+        world.l1Item_ary[playerNextBottomRow][playerNextRightCol] == 2)){
+            console.log("Ooooh");
+            stuck_bool = true;
+            return;
+    }
     // check top left
     if (world.l1Item_ary[playerNextTopRow][playerNextLeftCol] !== 0) {
         console.log("crash top left", world.l1Item_ary[playerNextTopRow][playerNextLeftCol]);
@@ -122,6 +132,7 @@ function update() {
         console.log("crash bottom Right", world.l1Item_ary[playerNextBottomRow][playerNextRightCol]);
         stuck_bool = true;
     }
+
     if (!stuck_bool) {
         //update position
         world.player_spr.x = newXpos;
