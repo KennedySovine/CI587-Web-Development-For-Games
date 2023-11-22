@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="tiles.png">
+	<!-- Created with Adobe Flash Professional version 14.1.0.96 -->
+	<!-- http://www.adobe.com/products/flash.html -->
+	<SubTexture name="tile0000" x="0" y="0" width="34" height="34" pivotX="1" pivotY="1"/>
+	<SubTexture name="tile0001" x="0" y="44" width="34" height="34"/>
+</TextureAtlas>

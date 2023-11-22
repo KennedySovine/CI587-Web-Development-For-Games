@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="newPlayer.png">
+	<!-- Created with Adobe Flash Professional version 14.1.0.96 -->
+	<!-- http://www.adobe.com/products/flash.html -->
+	<SubTexture name="newPlayer0000" x="0" y="0" width="28" height="32" pivotX="0" pivotY="0" frameX="0" frameY="0" frameWidth="30" frameHeight="32"/>
+	<SubTexture name="newPlayer0001" x="38" y="0" width="30" height="32"/>
+	<SubTexture name="newPlayer0002" x="78" y="0" width="30" height="32"/>
+	<SubTexture name="newPlayer0003" x="0" y="42" width="27" height="32" frameX="0" frameY="0" frameWidth="30" frameHeight="32"/>
+</TextureAtlas>
