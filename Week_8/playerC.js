@@ -1,3 +1,4 @@
+var delayHealth;
 class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, xPos, yPos, texture) {
         super(scene, xPos, yPos, texture);
@@ -71,14 +72,18 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // only updates the health at intervals
         if (this._healthUpdateAllowed_bool){
             this._healthUpdateAllowed_bool= false; 
-            // TBS set up a timer to  call _enableHealthUpdates
             // TBS update the players _health property
+            this._health += change;
+            // TBS set up a timer to  call _enableHealthUpdates
+            //delayHealth = this.time.delayedCall(2000, this._enableHealthUpdates, [], this);
+            console.log("testing");
         }
     }// end of updateHealth()
     
     // Called at an iterval after updateHealthChange, effectively  re-enables
     // health updates
     _enableHealthUpdates() {
+        console.log("enabled");
         this._healthUpdateAllowed_bool=true;
     } // end of _enableHealthUpdates()
     

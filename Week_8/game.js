@@ -95,8 +95,15 @@ function buildWorld(scene, world) {
 
 // Callback function called when  a sprite is over a tile with a specified Index
 function onSomething(sprite, tile) {
-    console.log("Some Thing " + JSON.stringify(tile.properties));
     //TBS check whether the tile has a property "health" (specified in tiled)
+    console.log("Some Thing " + JSON.stringify(tile.properties));
+
+    console.log(tile.properties.health);
+    if(tile.properties.health == 5){
+        world.player_spr.updateHealth(5);
+    }
+    
+    console.log(world.player_spr.health);
     //TBS And sprite has an updateHealth method, if so call the sorites updateHelath method
     // Return false to stop default collision handling
     return false;
@@ -118,6 +125,7 @@ function update() {
         world.player_spr.standStill();
     }
     // TBS update the health display
+   world.health_txt.setText(world.player_spr.health);
 } // end of update()
 
 let game = new Phaser.Game(config);
