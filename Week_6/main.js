@@ -1,12 +1,14 @@
-var world = world || {
-    gameHeight: 600,
-    gameWidth: 880,
-};
-
 let config = {
     type: Phaser.AUTO,
-    width: world.gameWidth,
-    height: world.gameHeight,
+    width: 880,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: {y:100},
+            debug: true,
+        }
+    },
     scene: {
         preload: preload,
         create: create,
@@ -14,30 +16,26 @@ let config = {
     }
 };
 
+let game = new Phaser.Game(config);
+var circle1, circle2;
+
 function preload() {
     this.load.image('circle_img', 'assets/sphere.png');
 } //end of preload() 
 
 function create() {
-    let circle1X = 100;
-    let circle1Y = 50;
-    let circle2X = 300;
-    let circle2Y = 52;
     // set up two circle objects
-    this.circle1 = new Circle(this, 'circle_img', circle1X, circle1Y, 0, 4);
-    this.circle2 = new Circle(this, 'circle_img', circle2X, circle2Y, -4, 4);
-    this.add.existing(this.circle1);
-    this.add.existing(this.circle2);
+    circle1 = this.physics.add.image(100, 50, 'circle_img');
+    circle2 = this.physics.add.image(100, 100, 'circle_img');
+
+    circle1.body.setCollideWorldBounds(true);
+    circle2.body.setCollideWorldBounds(true);
+
+    circle1.setBounce(.75);
+    circle2.setBounce(.75);
+    
+    this.physics.add.collider(circle1, circle2);
 } // end of create()
 
 function update() {
-    this.circle1.findCollisionWorld();
-    this.circle2.findCollisionWorld();
-       if (this.circle1.findCollisionCircle(this.circle2)) {
-            console.log("collision found");
-        }
-        this.circle1.move();
-        this.circle2.move();
     } // end of update()
-
-let game = new Phaser.Game(config);
