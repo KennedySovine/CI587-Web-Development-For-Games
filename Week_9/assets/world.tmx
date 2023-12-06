@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32" spacing="1" margin="1" tilecount="48">
+  <image source="tiles.png" width="265" height="199"/>
+ </tileset>
+ <layer name="groundLayer" width="8" height="8" visible="0">
+  <data encoding="csv">
+30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30
+</data>
+ </layer>
+ <layer name="wallsLayer" width="8" height="8">
+  <data encoding="csv">
+10,0,0,0,0,0,0,0,
+10,0,0,0,0,0,0,0,
+10,0,0,10,10,0,0,0,
+10,0,0,10,10,0,0,0,
+10,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,10,
+0,0,10,10,10,0,0,10,
+0,0,0,0,0,0,0,10
+</data>
+ </layer>
+ <layer name="playerLayer" width="8" height="8" visible="0">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="thingsLayer" width="8" height="8">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,31,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+47,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>
