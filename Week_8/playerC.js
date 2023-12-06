@@ -75,7 +75,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             // TBS update the players _health property
             this._health += change;
             // TBS set up a timer to  call _enableHealthUpdates
-            //delayHealth = this.time.delayedCall(2000, this._enableHealthUpdates, [], this);
+            this.time.addEvent(2000, this._enableHealthUpdates, [], this);
             console.log("testing");
         }
     }// end of updateHealth()
